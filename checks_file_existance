@@ -1,0 +1,22 @@
+#!/bin/bash
+
+./file.sh &
+pid1=$!
+./file.sh &
+pid2=$!
+./file.sh &
+pid3=$!
+./file.sh &
+pid4=$!
+echo "sleeping"
+sleep 5
+echo "killing"
+sleep 1
+kill $pid1
+kill $pid2
+kill $pid3
+kill $pid4
+echo "pid $pid1 killed"
+echo "pid $pid2 killed"
+echo "pid $pid3 killed"
+echo "pid $pid4 killed"
