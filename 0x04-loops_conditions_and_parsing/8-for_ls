@@ -1,1 +1,10 @@
 #!/usr/bin/env bash
+
+dir="./"
+
+for file in "$dir"/*; do
+  if [ -f "$file" ]; then
+    # cut out first 3 characters | then set delimeter -d and start point
+    echo "${file:3}" | cut -d'-' -f2
+  fi
+done
