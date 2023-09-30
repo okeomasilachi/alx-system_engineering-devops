@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# displays The content of the current directory
 dir="./"
 
 for file in "$dir"/*; do
