@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+# kills the file process 7-highlander
+val=$(pgrep -f 7-highlander)
+kill -9 "$val"
