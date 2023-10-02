@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# recieving SIGTERM and takes action 
 trap 'echo "I am invincible!!!"' SIGTERM
 
 
