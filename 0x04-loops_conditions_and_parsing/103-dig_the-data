@@ -4,4 +4,3 @@
 
 awk '{print $1, $9}' apache-access.log > sort.log
 awk '{ip_count[$1" "$2]++} END {for (ip in ip_count) print ip_count[ip], ip}' sort.log | sort -k1,1nr
-
