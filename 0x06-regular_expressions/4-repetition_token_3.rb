@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/127.0.0.[0-9]/).join
+# string may exclude or include any number of 't' in it
+puts ARGV[0].scan(/hbt?++n/).join
