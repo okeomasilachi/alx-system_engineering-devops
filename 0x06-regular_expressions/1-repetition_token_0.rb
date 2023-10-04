@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/127.0.0.[0-9]/).join
+# matches the string hbt{from 2 to 5 times}n
+puts ARGV[0].scan(/hbt{2,5}n/).join
