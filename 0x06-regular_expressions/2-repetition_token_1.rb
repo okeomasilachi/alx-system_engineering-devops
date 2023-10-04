@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/127.0.0.[0-9]/).join
+# searches for the pattern hbtn where b is optional
+puts ARGV[0].scan(/hb?tn/).join
