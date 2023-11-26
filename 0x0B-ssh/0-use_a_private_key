@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #uses ssh to connect to your server using the
 #private key ~/.ssh/school with the user ubuntu
-arg0="~/.ssh/school"
-ssh -i $arg0 ubuntu@54.198.56.98
+
+ssh -i ~/.ssh/school ubuntu@54.198.56.98
