@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# transfers a file from our client to a server
+
+if [ "$#" -lt 4 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit
+fi
+
+FPT=$1
+S_IP=$2
+UNAME=$3
+SSH_K=$4
+
+scp -o StrictHostKeyChecking=no -i "$SSH_K" "$FPT" "$UNAME"@"$S_IP":
