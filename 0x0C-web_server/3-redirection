@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Configure's your Nginx server so that /redirect_me
+# is redirecting to another page.
+
+file_path="/etc/nginx/sites-enabled/default"
+line_to_append="
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+"
+if grep -q "location /redirect_me {" "$file_path"; then
+    exit
+fi
+pattern="root /var/www/html;"
+awk -v pattern="$pattern" -v line="$line_to_append" '$0 ~ pattern { print $0 RS line; next } 1' "$file_path" > tmpfile && cat tmpfile > "$file_path" && rm tmpfile
+sudo service nginx restart
