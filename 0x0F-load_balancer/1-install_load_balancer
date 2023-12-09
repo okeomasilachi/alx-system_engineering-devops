@@ -48,8 +48,8 @@ frontend main
 
 backend app_servers
     balance roundrobin
-    server web-01 54.198.56.98:80 check
-    server web-02 35.153.232.194:80 check
+    server 300847-web-01 54.198.56.98:80 check
+    server 300847-web-02 35.153.232.194:80 check
 EOL
 
 sudo systemctl enable haproxy
