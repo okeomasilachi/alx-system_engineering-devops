@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header
+
+# sudo apt-get update
+# sudo apt-get install -y nginx
+
+file_path="/etc/nginx/sites-enabled/default"
+
+name=$hostname
+
+line_to_append="
+        add_header X-Served-By \$hostname;"
+
+pattern="location / {"
+
+appended=false
+
+sudo awk -v pattern="$pattern" -v line="$line_to_append" -v appended="$appended" '
+    $0 ~ pattern && !appended {
+        print $0 RS line
+        appended=true
+        next
+    }
+    1
+' "$file_path" > tmpfile && cat tmpfile > "$file_path" && rm tmpfile
+
+sudo service nginx restart
