@@ -4,6 +4,33 @@
 # sudo apt-get update
 # sudo apt-get install -y nginx
 
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+sudo sed -i 's/80 default_server;/80;/g' /etc/nginx/sites-available/default
+
+file_path="/etc/nginx/sites-enabled/default"
+line_to_append="
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+"
+pattern="root /var/www/html;"
+awk -v pattern="$pattern" -v line="$line_to_append" '$0 ~ pattern { print $0 RS line; next } 1' "$file_path" > tmpfile && cat tmpfile > "$file_path" && rm tmpfile
+
+sudo mkdir /var/www/error
+echo "Ceci n'est pas une page" | sudo tee /var/www/error/custom_404.html > /dev/null
+
+file_path="/etc/nginx/sites-enabled/default"
+line_to_append="
+    error_page 404 /custom_404.html;
+	location = /custom_404.html {
+		root /var/www/error;
+		internal;
+	}"
+
+pattern="server_name _;"
+sudo awk -v pattern="$pattern" -v line="$line_to_append" '$0 ~ pattern { print $0 RS line; next } 1' "$file_path" > tmpfile && cat tmpfile > "$file_path" && rm tmpfile
+
 file_path="/etc/nginx/sites-enabled/default"
 
 name=$hostname
