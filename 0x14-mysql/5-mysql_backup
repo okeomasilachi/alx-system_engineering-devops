@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Check if the password argument is provided
 if [ -z "$1" ]; then
-  echo "Usage: $0 <mysql_password>"
-  exit 1
+  exit
 fi
 
 # MySQL dump file name
