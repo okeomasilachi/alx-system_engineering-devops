@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# return a page containing Hello Holberton
+echo "Hello Holberton" > /var/www/html/index.html
+service apache2 restart
