@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
 # Run software as another user
+if [ $# -eq 0 ]; then
+    exit
+fi
+
+username=$1
+
+sudo -u "$username" whoami
