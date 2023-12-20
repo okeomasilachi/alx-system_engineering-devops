@@ -3,4 +3,5 @@
 
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 sed -i 's/user\s*[^;]*;/user nginx;/g' /etc/nginx/nginx.conf
+sed -i 's/listen\s*[^;]*;/listen 8080;/g' /etc/nginx/sites-available/default
 sudo service nginx reload
